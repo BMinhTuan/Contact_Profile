@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bùi Minh Tuấn | Contact Profile</title>
+  <meta name="description" content="Contact profile of Bùi Minh Tuấn - phone, Zalo, bank QR and personal information." />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: rgba(255, 255, 255, 0.10);
+      --card-border: rgba(255, 255, 255, 0.18);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #a78bfa;
+      --success: #22c55e;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.35), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(167, 139, 250, 0.30), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.18), transparent 30%),
+        var(--bg);
+      padding: 28px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .profile-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+      padding: 28px;
+    }
+
+    .glow {
+      position: absolute;
+      inset: -120px auto auto 50%;
+      width: 260px;
+      height: 260px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.18);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+
+    .header {
+      position: relative;
+      text-align: center;
+    }
+
+    .avatar-wrap {
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 18px;
+      padding: 4px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--success));
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 999px;
+      border: 4px solid rgba(15, 23, 42, 0.92);
+      background: rgba(255, 255, 255, 0.08);
+      display: block;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .nickname {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .phone {
+      margin: 18px auto 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.10);
+      font-weight: 700;
+    }
+
+    .section {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .intro-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .intro-item {
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .intro-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .en {
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+    }
+
+    .vi {
+      margin-top: 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .qr-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .qr-card {
+      padding: 16px;
+      border-radius: 24px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .qr-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .qr-title strong {
+      font-size: 15px;
+    }
+
+    .qr-title span {
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    .qr-image {
+      width: 100%;
+      max-height: 310px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #fff;
+      padding: 10px;
+      display: block;
+    }
+
+    .bank-info {
+      margin-top: 14px;
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      border: 0;
+      width: 100%;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      color: #06111f;
+      background: #f8fafc;
+      font-weight: 800;
+      font-size: 15px;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .btn.secondary {
+      color: var(--text);
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 18px;
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    @media (min-width: 520px) {
+      body {
+        padding: 44px 16px;
+      }
+
+      .actions {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="profile-card">
+      <div class="glow"></div>
+
+      <header class="header">
+        <!-- Thay avatar bằng cách upload file tên đúng: avatar.jpg -->
+        <div class="avatar-wrap">
+          <img class="avatar" src="avatar.jpg" alt="Profile photo of Bùi Minh Tuấn" onerror="this.src='https://placehold.co/400x400/0f172a/f8fafc?text=BMT'" />
+        </div>
+
+        <h1>Bùi Minh Tuấn</h1>
+        <div class="nickname">Contact Profile • Hồ sơ liên hệ</div>
+
+        <a class="phone" href="tel:+84988308632">📞 (+84) 988 308 632</a>
+      </header>
+
+      <section class="section">
+        <div class="intro-list">
+          <div class="intro-item">
+            <div class="en">System Infrastructure & Security Management</div>
+            <div class="vi">Quản lý hạ tầng & bảo mật hệ thống</div>
+          </div>
+
+          <div class="intro-item">
+            <div class="en">Open for collaboration, support and networking</div>
+            <div class="vi">Sẵn sàng kết nối, hỗ trợ và hợp tác</div>
+          </div>
+
+          <div class="intro-item">
+            <div class="en">Passionate about football, teamwork and outdoor activities</div>
+            <div class="vi">Đam mê bóng đá, tinh thần đồng đội và hoạt động ngoài trời</div>
+          </div>
+
+          <div class="intro-item">
+            <div class="en">Coffee enthusiast & exploring places around the world</div>
+            <div class="vi">Nghiện cà phê và thích check-in khắp thế giới</div>
+          </div>
+
+          <div class="intro-item">
+            <div class="en">Technology • Connection • Experience • Lifestyle</div>
+            <div class="vi">Công nghệ • Kết nối • Trải nghiệm • Cuộc sống</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <a class="btn" href="tel:+84988308632">Call now</a>
+        <!-- Nếu có link Zalo thật, thay dấu # bên dưới bằng link đó -->
+        <a class="btn secondary" href="#zalo">Open Zalo QR</a>
+      </div>
+
+      <section class="qr-grid">
+        <div class="qr-card">
+          <div class="qr-title">
+            <strong>Bank Transfer QR</strong>
+            <span>QR chuyển khoản</span>
+          </div>
+
+          <!-- Thay QR ngân hàng bằng cách upload file tên đúng: qr-bank.png -->
+          <img class="qr-image" src="qr-bank.png" alt="Bank transfer QR code" onerror="this.src='https://placehold.co/800x800/ffffff/0f172a?text=Upload+qr-bank.png'" />
+
+          <div class="bank-info">
+            <div><strong>Bank:</strong> Update later / Cập nhật sau</div>
+            <div><strong>Account No:</strong> Update later / Cập nhật sau</div>
+            <div><strong>Account Name:</strong> BUI MINH TUAN</div>
+          </div>
+        </div>
+
+        <div class="qr-card" id="zalo">
+          <div class="qr-title">
+            <strong>Zalo QR</strong>
+            <span>QR liên hệ Zalo</span>
+          </div>
+
+          <!-- Thay QR Zalo bằng cách upload file tên đúng: qr-zalo.png -->
+          <img class="qr-image" src="qr-zalo.png" alt="Zalo QR code" onerror="this.src='https://placehold.co/800x800/ffffff/0f172a?text=Upload+qr-zalo.png'" />
+        </div>
+      </section>
+
+      <div class="footer">
+        Built as a simple static contact page.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
